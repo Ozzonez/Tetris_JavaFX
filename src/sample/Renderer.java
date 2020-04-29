@@ -29,26 +29,34 @@ import java.util.Vector;
  */
 public class Renderer {
 
-
+    /** Renderer singleton*/
     public static final Renderer INSTANCE = new Renderer();
 
+    /** reference to Controller singleton*/
     Controller controller = Controller.INSTANCE;
 
+    /** reference to Board singleton*/
     Board board = Board.INSTANCE;
+
     /** reference to a currently controlled tetromino*/
     private Tetromino tetromino;
+
     /** layout*/
     private Pane group = new Pane();
+
     /** scene*/
     private Scene scene = new Scene(group, board.getWIDTH() + 170, board.getHEIGHT());
+
     /** text field for displaying last reward*/
     Text lastReward = new Text(260, 300, "Last reward");
+
     /** text field for displaying the score*/
     Text score = new Text(260, 120, "Score: ");
+
     /** text field for displaying game over information*/
     Text gameOver = new Text(5, 300, "GAME OVER!");
 
-
+    /**Constructor, constructs renderer singleton*/
     private Renderer() {
 
 
@@ -56,6 +64,7 @@ public class Renderer {
             throw new IllegalStateException("Singleton already constructed");
         }
     }
+
     /**
      * Adds new tetromino to the stage
      *
@@ -77,7 +86,7 @@ public class Renderer {
     public void initializeView(Stage stage, Tetromino passedTetromino) throws Exception{
 
         tetromino = passedTetromino;
-
+        controller  = Controller.INSTANCE;
 
         Image image = new Image(new FileInputStream("dddd.png"));
         ImageView imageView = new ImageView(image);

@@ -1,14 +1,7 @@
 package sample;
 
 import javafx.application.Platform;
-import javafx.scene.shape.Rectangle;
-import javafx.animation.AnimationTimer;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.shape.Rectangle;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -24,20 +17,18 @@ import java.util.TimerTask;
  *
  */
 public class MainController {
-
+    /**MainController singleton*/
     public static final MainController INSTANCE = new MainController();
 
-    private MainController() {
+    /**reference to controller singleton*/
+    private Controller controller = Controller.INSTANCE;
 
+    /**reference to renderer singleton*/
+    private Renderer renderer = Renderer.INSTANCE;
 
-        if (INSTANCE != null) {
-            throw new IllegalStateException("Singleton already constructed");
-        }
-    }
+    /**reference to board singleton*/
+    private Board board = Board.INSTANCE;
 
-    Controller controller = Controller.INSTANCE;
-    Renderer renderer = Renderer.INSTANCE;
-    Board board = Board.INSTANCE;
     /**reference to primaryStage*/
     Stage window;
 
@@ -73,6 +64,22 @@ public class MainController {
             });
         }
     };
+
+
+
+    /**
+     * Constructor, constructs MainController singleton.
+     */
+    private MainController() {
+
+        tetromino = new Tetromino();
+
+
+
+        if (INSTANCE != null) {
+            throw new IllegalStateException("Singleton already constructed");
+        }
+    }
 
 
     /**

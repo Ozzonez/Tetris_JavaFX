@@ -1,15 +1,10 @@
 package sample;
 
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.scene.shape.Rectangle;
 
-import java.util.Timer;
-import java.util.TimerTask;
+
+
 
 /**
  * Initializes MainController class.
@@ -27,7 +22,6 @@ public class Main extends Application {
 
         MainController mainController = MainController.INSTANCE;
         mainController.window = primaryStage;
-        mainController.tetromino = new Tetromino();
         mainController.initGame();
     }
 

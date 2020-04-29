@@ -9,16 +9,22 @@ package sample;
  */
 public class Controller {
 
-    private MainController mainController = MainController.INSTANCE;
-
+    /**Controller singleton*/
     public static final Controller INSTANCE = new Controller();
 
+    /**reference to MainController singleton*/
+    private MainController mainController;
+
+    /**reference to Renderer singleton*/
     private Renderer renderer = Renderer.INSTANCE;
 
-    /**reference to board*/
+    /**reference to Board singleton*/
     private Board board = Board.INSTANCE;
 
 
+
+
+    /**Constructonr, constructs Controller singleton*/
     private Controller() {
 
 
@@ -26,6 +32,8 @@ public class Controller {
             throw new IllegalStateException("Singleton already constructed");
         }
     }
+
+
     /**
      * Used to handle key event LEFT, calls moveLeft method of the Tetromino class.
      *
@@ -35,6 +43,7 @@ public class Controller {
     {
         tetromino.moveLeft();
     }
+
     /**
      * Used to handle key event RIGHT, calls moveLeft method of the Tetromino class.
      *
@@ -55,7 +64,7 @@ public class Controller {
     public void moveDown(Tetromino tetromino) {
         if (tetromino.moveDown() == 0) {
 
-
+            mainController = MainController.INSTANCE;
             mainController.tetromino = new Tetromino();
             tetromino = mainController.tetromino;
 

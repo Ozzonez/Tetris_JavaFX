@@ -7,25 +7,40 @@ package sample;
  * @version 3.1
  */
 public class Board {
-    /**current score*/
-    private int score = 0;
-    /**size of one rectangular field of the board*/
-    private final int SQUARE = 25;
-    /**number of rectangular fields horizontally*/
-    private final int X = 10;
-    /**number of rectangular fields vertically*/
-    private final int Y = 24;
-    /**number of pixels vertically*/
-    private final int HEIGHT = SQUARE * Y;
-    /**number of pixels horizontally*/
-    private final int WIDTH = SQUARE * X;
-    /**board array*/
-    private int [][] COORDS = new int [10][24];
 
+    /**current score*/
+    private int score;
+
+    /**size of one rectangular field of the board*/
+    private final int SQUARE;
+
+    /**number of rectangular fields horizontally*/
+    private final int X;
+
+    /**number of rectangular fields vertically*/
+    private final int Y;
+
+    /**number of pixels vertically*/
+    private final int HEIGHT;
+
+    /**number of pixels horizontally*/
+    private final int WIDTH;
+
+    /**board array*/
+    private int [][] COORDS;
+
+    /**board singleton*/
     public static final Board INSTANCE = new Board();
 
+    /**Constructor, constructs Board singleton*/
     private Board() {
-
+        score = 0;
+        SQUARE = 25;
+        X = 10;
+        Y = 24;
+        HEIGHT = SQUARE * Y;
+        WIDTH = SQUARE * X;
+        COORDS = new int [10][24];
 
         if (INSTANCE != null) {
             throw new IllegalStateException("Singleton already constructed");
